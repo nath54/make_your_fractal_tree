@@ -91,6 +91,7 @@ function make_tree(){
             if(cl[i]>255){ cl[i]=255; }
             if(cl[i]<0){ cl[i]=0; }
         }
+        console.log(nb_gen,cl);
 
         ctx.strokeStyle="rgb("+parseInt(cl[2])+","+parseInt(cl[1])+","+parseInt(cl[2])+")";
         ctx.lineWidth = ep;
