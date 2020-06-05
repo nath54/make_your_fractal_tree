@@ -64,7 +64,7 @@ function make_tree(){
     }make_your_fractal_tre
 
 
-    function branche(x,y,longueur,agl,cl,ep,nb_gen){
+    function branche(x,y,longueur,agl,ep,nb_gen){
         while(agl>=360){ agl=agl-360; }
         while(agl<0){ agl=360+agl; }
         //
@@ -85,6 +85,13 @@ function make_tree(){
             var dy=-Math.sin(rads(agl-270))*longueur;
         }
         //
+        var cl=cl_init;
+        for(i=0; i<3; i++){
+            cl[i]+=cl_modif[i]*nb_gen;
+            if(cl[i]>255){ cl[i]=255; }
+            if(cl[i]<0){ cl[i]=0; }
+        }
+
         ctx.strokeStyle="rgb("+parseInt(cl[2])+","+parseInt(cl[1])+","+parseInt(cl[2])+")";
         ctx.lineWidth = ep;
         ctx.beginPath();
@@ -92,15 +99,11 @@ function make_tree(){
         ctx.lineTo(x+dx, y+dy);
         ctx.stroke();
         ctx.closePath();
+        
         //
         if(longueur>l_min){
             var nl=longueur*rap_l;
-            var ncl=cl;
-            for(i=0; i<3; i++){
-                ncl[i]+=cl_modif[i];
-                if(ncl[i]>255){ ncl[i]=255; }
-                if(ncl[i]<0){ ncl[i]=0; }
-            }
+            
             var nep=ep*rap_ep;
 
             nagls=[]; 
@@ -127,7 +130,7 @@ function make_tree(){
             
             for(na of nagls){
                 
-                branche(x+dx,y+dy,nl,na,ncl,nep,nb_gen+1);
+                branche(x+dx,y+dy,nl,na,nep,nb_gen+1);
             }
             
             
