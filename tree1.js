@@ -61,7 +61,7 @@ function make_tree(){
     {
         var pi = Math.PI;
         return degrees * (pi/180);
-    }make_your_fractal_tre
+    }
 
 
     function branche(x,y,longueur,agl,ep,nb_gen){
