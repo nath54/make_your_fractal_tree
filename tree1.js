@@ -61,7 +61,7 @@ function make_tree(){
     {
         var pi = Math.PI;
         return degrees * (pi/180);
-    }
+    }make_your_fractal_tre
 
 
     function branche(x,y,longueur,agl,cl,ep,nb_gen){
@@ -73,12 +73,12 @@ function make_tree(){
             var dy=-Math.cos(rads(agl))*longueur;
         }
         else if(agl>=90 && agl<180){
-            var dx=Math.cos(rads(agl))*longueur;
-            var dy=Math.sin(rads(agl))*longueur;
+            var dx=Math.cos(rads(agl-90))*longueur;
+            var dy=Math.sin(rads(agl-90))*longueur;
         }
         else if(agl>=180 && agl<270){
-            var dx=-Math.sin(rads(agl))*longueur;
-            var dy=Math.cos(rads(agl))*longueur;
+            var dx=-Math.sin(rads(agl-180))*longueur;
+            var dy=Math.cos(rads(agl-180))*longueur;
         }
         else if(agl>=270 && agl<360){
             var dx=-Math.cos(rads(agl-270))*longueur;
